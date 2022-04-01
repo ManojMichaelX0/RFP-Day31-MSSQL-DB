@@ -1,23 +1,22 @@
 use payroll_service
 Go
 
-Insert into employee_payroll (Name,Salary,StartDate) values('Manoj',80000,GETDATE())
-Insert into employee_payroll (Name,Salary,StartDate) values('Laxmi',13000,GETDATE())
-Insert into employee_payroll (Name,Salary,StartDate) values('Manoj',5000000,GETDATE())
-
-Select Salary 
-From employee_payroll
-Where Name='Manoj'
+Alter Table employee_payroll
+Add empPhoneNumber varchar(12)
 Go
-
-Select *
-From employee_payroll
-Where StartDate Between Cast('2018-01-01' As Date) And GETDATE() 
-
 
 Alter Table employee_payroll
-Add empPhoneNumber int  ,empAdress varchar default 'kazipet',empDepartment varchar default 'computer'
+Add empAddress TEXT NULL
+CONSTRAINT EMPADDRESS DEFAULT 'Indian'
+WITH VALUES
+Go
+
+Alter Table employee_payroll
+Add empDepartment TEXT NOT NULL
+CONSTRAINT EMPDEPARTMENT DEFAULT 'DEVELOPER'
+WITH VALUES
 Go
 
 Select *
 From employee_payroll
+
